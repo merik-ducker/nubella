@@ -13,8 +13,13 @@ module.exports = {
           orange: '#fddaa8',
         },
       },
+      linearGradientColors: theme => theme('colors'),
       // Add any other customizations here
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'), // If not already included
+    require('@tailwindcss/forms'), // If not already included
+    require('tailwindcss-gradients'),
+  ],
 }
