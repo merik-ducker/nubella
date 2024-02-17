@@ -33,7 +33,7 @@ const useBalloons = (engine) => {
             },
         });
 
-        Matter.Body.setVelocity(balloon, { x: (Math.random() - 0.5) * 10, y: -Math.random() * 10 - 5 });
+        Matter.Body.setVelocity(balloon, { x: (Math.random() - 0.5) * 10, y: -Math.random() * 30 - 5 });
         Matter.World.add(engine.world, balloon);
 
         setBalloons((balloons) => [...balloons, balloon]);
