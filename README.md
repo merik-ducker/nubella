@@ -2,7 +2,11 @@
 
 ## Introduction
 
-Nubella is an engaging React application that showcases the playful dynamics of balloons floating across the screen, powered by the physics engine Matter.js. This project offers users an interactive experience, allowing them to release balloons into the viewport and observe as they bounce and float in a realistic manner
+Nubella is an engaging React application that showcases the playful dynamics of balloons floating across the screen, powered by the physics engine Matter.js. This project offers users an interactive experience, allowing them to release balloons into the viewport and observe as they bounce and float in a realistic manner.
+
+## Live Demo
+
+Check out the live demo of the project here: [Nubella Live Demo](https://nubella-chi.vercel.app/)
 
 ## Features
 
