@@ -4,7 +4,7 @@ import useBalloons from '../hooks/useBalloons';
 import Balloon from './Balloon';
 
 const BalloonsSimulation = () => {
-    const { engine, renderRef } = useMatterEngine();
+    const { engine, renderRef } = useMatterEngine(1);
     const { balloons, shootBalloon } = useBalloons(engine);
 
     const shootBalloons = (nBalloons) => {
@@ -19,7 +19,7 @@ const BalloonsSimulation = () => {
                 <Balloon key={balloon.id} balloon={balloon} />
             ))}
             <button
-                onClick={() => shootBalloons(100)}
+                onClick={() => shootBalloons(50)}
                 style={{
                     position: 'absolute',
                     bottom: 20,

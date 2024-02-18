@@ -1,8 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 
-const useMatterEngine = () => {
-    const [engine] = useState(() => Matter.Engine.create());
+const useMatterEngine = (timeScale = 1) => { // Default timeScale to 1 if not provided
+    const [engine] = useState(() => Matter.Engine.create({
+        // Customizing the engine's timing to include a time scale
+        timing: {
+            timeScale: timeScale
+        }
+    }));
     const renderRef = useRef(null);
 
     useEffect(() => {

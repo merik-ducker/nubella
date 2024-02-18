@@ -11,8 +11,8 @@ const useBalloons = (engine) => {
                   .map((balloon) => engine.world.bodies.find((b) => b.id === balloon.id) || balloon)
                   .filter(Boolean) // Keep balloons that were found in the physics engine
                   .filter((balloon) => {
-                      // Check if the balloon is out of view, considering the viewport height
-                      const isInView = balloon.position.y < window.innerHeight;
+                      // Check if the balloon is out of view, considering the viewport height and width
+                      const isInView = balloon.position.y < window.innerHeight && balloon.position.x < window.innerWidth;
                       if (!isInView) {
                           // If out of view, find and remove the corresponding DOM element
                           const balloonElement = document.querySelector(`[data-balloon-id="${balloon.id}"]`);
