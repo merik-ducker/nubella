@@ -17,7 +17,7 @@ const useMatterEngine = (timeScale = 1) => { // Default timeScale to 1 if not pr
             options: {
                 wireframes: false,
                 width: window.innerWidth,
-                height: window.innerHeight,
+                height: window.innerHeight + 300,
             },
         });
         const runner = Matter.Runner.create();
