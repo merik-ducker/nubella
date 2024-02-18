@@ -5,21 +5,31 @@ const useBalloons = (engine) => {
     const [balloons, setBalloons] = useState([]);
 
     useEffect(() => {
-        const updateBalloons = () => {
-            setBalloons((balloons) =>
-                balloons.map((balloon) => {
-                    const updatedBalloon = engine.world.bodies.find((b) => b.id === balloon.id);
-                    return updatedBalloon || balloon;
-                }).filter(Boolean)
-            );
-        };
-
-        Matter.Events.on(engine, 'afterUpdate', updateBalloons);
-
-        return () => {
-            Matter.Events.off(engine, 'afterUpdate', updateBalloons);
-        };
-    }, [engine]);
+      const updateBalloons = () => {
+          setBalloons((currentBalloons) =>
+              currentBalloons
+                  .map((balloon) => engine.world.bodies.find((b) => b.id === balloon.id) || balloon)
+                  .filter(Boolean) // Keep balloons that were found in the physics engine
+                  .filter((balloon) => {
+                      // Check if the balloon is out of view, considering the viewport height
+                      const isInView = balloon.position.y < window.innerHeight;
+                      if (!isInView) {
+                          // If out of view, find and remove the corresponding DOM element
+                          const balloonElement = document.querySelector(`[data-balloon-id="${balloon.id}"]`);
+                          if (balloonElement) balloonElement.remove();
+                      }
+                      return isInView;
+                  })
+          );
+      };
+  
+      Matter.Events.on(engine, 'afterUpdate', updateBalloons);
+  
+      return () => {
+          Matter.Events.off(engine, 'afterUpdate', updateBalloons);
+      };
+  }, [engine]);
+  
 
     const shootBalloon = () => {
         // Balloon creation is done here

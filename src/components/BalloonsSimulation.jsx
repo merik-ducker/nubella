@@ -18,9 +18,18 @@ const BalloonsSimulation = () => {
             {balloons.map((balloon) => (
                 <Balloon key={balloon.id} balloon={balloon} />
             ))}
-            <button onClick={() => shootBalloons(100)} style={{ position: 'absolute', bottom: 20, left: '50%' }}>
+            <button
+                onClick={() => shootBalloons(100)}
+                style={{
+                    position: 'absolute',
+                    bottom: 20,
+                    left: '50%',
+                    transform: 'translateX(-50%)', // Add this line
+                }}
+            >
                 Shoot Balloons
             </button>
+
         </div>
     );
 };
